@@ -13,7 +13,7 @@ export default function ReplyComponent({
     props: {
         id: string;
         reply?: string;
-        topic: number;
+        topic: string;
         img: string;
         name: string;
         hours: string;
@@ -22,7 +22,7 @@ export default function ReplyComponent({
     COMMENTS: {
         id: string;
         reply?: string;
-        topic: number;
+        topic: string;
         img: string;
         name: string;
         hours: string;
@@ -36,7 +36,7 @@ export default function ReplyComponent({
     handleupdate: (element: {
         id: string;
         reply?: string;
-        topic: number;
+        topic: string;
         img: string;
         name: string;
         hours: string;

@@ -7,7 +7,7 @@ interface NewCommentProps {
   handleupdate: (element: {
     id: string;
     reply?: string;
-    topic: number;
+    topic: string;
     img: string;
     name: string;
     hours: string;
@@ -36,12 +36,12 @@ export function NewComment({ handleupdate, id, userMe, reply, setIsReply }: NewC
     handleupdate({
       id: uuidv4(),
       reply: reply,
-      topic: Number(id),
+      topic: id,
       img: userMe?.img,
       name: userMe?.name,
       hours: `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}T${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`,
       desc: message,
-    } as Comment);
+    });
     setMessage("");
     setIsReply && setIsReply(false);
   };

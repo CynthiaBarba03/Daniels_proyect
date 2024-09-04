@@ -24,7 +24,7 @@ interface CommentCardProps {
   handleupdate: (element: {
     id: string;
     reply?: string;
-    topic: number;
+    topic: string;
     img: string;
     name: string;
     hours: string;
@@ -41,11 +41,11 @@ export function CommentCard({ img, name, desc, hours, id, userMe, handleupdate }
 
       shadow={false}
       color="transparent"
-      className="grid items-center gap-6 "
+      className="grid items-center gap-6  "
     >
       <Card placeholder=""
         onPointerEnterCapture={undefined}
-        onPointerLeaveCapture={undefined} className="p-0 gap-5 flex flex-col ">
+        onPointerLeaveCapture={undefined} className="p-4 gap-5 flex flex-col ">
         <div className=" !m-0 h-full  w-full  max-h-[40px] max-w-[40px] ">
           <Image
             width={768}

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Typography } from "@material-tailwind/react";
 
 import { v4 as uuidv4 } from 'uuid';
@@ -11,7 +11,7 @@ import ReplyComponent from "@/components/replyComponent";
 export interface Comment {
   id: string;
   reply?: string;
-  topic: number;
+  topic: string;
   img: string;
   name: string;
   hours: string;
@@ -19,12 +19,16 @@ export interface Comment {
 }
 
 export function Comments({ id }: { id: string }) {
+  console.log(id);
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const myParamReason = urlParams.get("name");
-  console.log(myParamReason);
-
-
+  const [name, setName] = useState<string>('');
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParamReason = urlParams.get("name");
+      console.log(myParamReason); setName(myParamReason ?? "name");
+    }
+  }, []);
 
   const userMe = {
     name: "Daniels Shittu",
@@ -34,7 +38,7 @@ export function Comments({ id }: { id: string }) {
     {
       id: uuidv4(),
       reply: undefined,
-      topic: 1,
+      topic: "1",
       img: "/image/avatar1.jpg",
       name: "Tina Andrew",
       hours: " · 7 minutes ago",
@@ -43,7 +47,7 @@ export function Comments({ id }: { id: string }) {
     {
       id: uuidv4(),
       reply: undefined,
-      topic: 1,
+      topic: "2",
       img: "/image/avatar2.jpg",
       name: "Emma Roberts",
       hours: " · 2 hours ago",
@@ -52,20 +56,29 @@ export function Comments({ id }: { id: string }) {
 
 
   ])
-  const handleupdate = (element: Comment) => {
+  const handleupdate = (element: {
+    id: string;
+    reply?: string;
+    topic: string;
+    img: string;
+    name: string;
+    hours: string;
+    desc: string;
+  }) => {
     setComments([...Comments, element])
   }
+
 
   return (
     <section className="w-full py-10 max-w-2xl mx-auto flex flex-col px-5 pb-20">
       <Typography placeholder=""
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined} variant="h4" className=" md:text-center" color="blue-gray">
-        3 Comentarios de {myParamReason}
+        {Comments.filter((e: any) => id === e.topic).length} Comentarios de {name}
       </Typography>
       <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-1">
         {Comments.filter((e: any) => e.reply === undefined).map((props: Comment, i: number) => {
-          return Number(id) === props.topic ? (
+          return id === props.topic ? (
             <div key={i.toString()}> <ReplyComponent userMe={userMe} handleupdate={handleupdate} isReply={false} COMMENTS={Comments} props={props}></ReplyComponent> </div>
           ) : null;
         })}
