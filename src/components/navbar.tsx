@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Navbar as MTNavbar,
   Collapse,
@@ -7,13 +8,15 @@ import {
   Typography,
 } from "@material-tailwind/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const NAV_MENU = ["Home", "About Us", "Contact Us"];
 
 function NavItem({ children }: { children: React.ReactNode }) {
   return (
     <li>
-      <Typography placeholder=""
+      <Typography
+        placeholder=""
         onPointerEnterCapture={undefined}
         onPointerLeaveCapture={undefined}
         as="a"
@@ -56,7 +59,8 @@ export function Navbar() {
   }, []);
 
   return (
-    <MTNavbar placeholder=""
+    <MTNavbar
+      placeholder=""
       onPointerEnterCapture={undefined}
       onPointerLeaveCapture={undefined}
       fullWidth
@@ -66,7 +70,8 @@ export function Navbar() {
       className="fixed top-0 z-50 border-0"
     >
       <div className="container mx-auto flex items-center justify-between">
-        <Typography placeholder=""
+        <Typography
+          placeholder=""
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
           as="a"
@@ -75,29 +80,44 @@ export function Navbar() {
           className="text-lg font-bold"
           color={isScrolling ? "blue-gray" : "white"}
         >
-          Material Tailwind
+          Danielsss
         </Typography>
         <ul
-          className={`ml-10 hidden items-center gap-6 lg:flex ${isScrolling ? "text-gray-900" : "text-white"
-            }`}
+          className={`ml-10 hidden items-center gap-6 lg:flex ${
+            isScrolling ? "text-gray-900" : "text-white"
+          }`}
         >
           {NAV_MENU.map((name) => (
             <NavItem key={name}>{name}</NavItem>
           ))}
         </ul>
-        <div className="hidden items-center gap-2 lg:flex">
-          <Button placeholder=""
-            onPointerEnterCapture={undefined}
-            onPointerLeaveCapture={undefined} variant="text" color={isScrolling ? "gray" : "white"}>
-            Log in
-          </Button>
-          <a href="https://www.material-tailwind.com/blocks" target="_blank">
-            <Button placeholder=""
+        <div className="hidden it ems-center gap-2 lg:flex">
+          <a href="./login">
+            {" "}
+            <Button
+              placeholder=""
               onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined} color={isScrolling ? "gray" : "white"}>blocks</Button>
+              onPointerLeaveCapture={undefined}
+              variant="text"
+              color={isScrolling ? "gray" : "white"}
+            >
+              Log in
+            </Button>
+          </a>
+
+          <a href="https://www.material-tailwind.com/blocks" target="_blank">
+            <Button
+              placeholder=""
+              onPointerEnterCapture={undefined}
+              onPointerLeaveCapture={undefined}
+              color={isScrolling ? "gray" : "white"}
+            >
+              blocks
+            </Button>
           </a>
         </div>
-        <IconButton placeholder=""
+        <IconButton
+          placeholder=""
           onPointerEnterCapture={undefined}
           onPointerLeaveCapture={undefined}
           variant="text"
@@ -120,13 +140,23 @@ export function Navbar() {
             ))}
           </ul>
           <div className="mt-6 flex items-center gap-2">
-            <Button placeholder=""
+            <Button
+              placeholder=""
               onPointerEnterCapture={undefined}
-              onPointerLeaveCapture={undefined} variant="text">Log in</Button>
+              onPointerLeaveCapture={undefined}
+              variant="text"
+            >
+              Log in
+            </Button>
             <a href="https://www.material-tailwind.com/blocks" target="_blank">
-              <Button placeholder=""
+              <Button
+                placeholder=""
                 onPointerEnterCapture={undefined}
-                onPointerLeaveCapture={undefined} color="gray">blocks</Button>
+                onPointerLeaveCapture={undefined}
+                color="gray"
+              >
+                blocks
+              </Button>
             </a>
           </div>
         </div>
